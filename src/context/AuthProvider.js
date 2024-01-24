@@ -13,9 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     )
 }
-// Create a custom hook for using the context
-const useMyContext = () => {   return AuthProvider(AuthContext); };
-export {AuthContext ,useMyContext};
+export default AuthContext;
 
 
 // MyContext.js

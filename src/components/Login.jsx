@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect, useContext } from 'react';
 // import AuthContext from "../context/AuthProvider";
-import {AuthContext} from "../context/AuthProvider"
+import AuthContext from "../context/AuthProvider"
 import "./register.css";
 import axios from '../api/axios';
 import { Link } from 'react-router-dom';
 const LOGIN_URL = 'https://project-taxbuddy.onrender.com/user/login';
 
 const Login = () => {
-    const { setAuth } = useContext(AuthContext);
+    const {setAuth} = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
     const [accessToken, setaccesstoken] = useState('');
@@ -36,12 +36,13 @@ const Login = () => {
                     // withCredentials: true
                 }
             );
-            console.log(JSON.stringify(response?.data?.data[0]?.token));
+            // console.log(JSON.stringify(response?.data?.data[0]?.token));
             //console.log(JSON.stringify(response));
-            const accessToken = response?.data?.data[0]?.token;
+            // const accessToken = response?.data?.data[0]?.token;
+            // setaccesstoken(response?.data?.data[0]?.token)
             // const accessToken = response?.data?.accessToken;
             // const roles = response?.data?.roles;
-            setAuth( {user,pwd,accessToken });
+            setAuth({token:response?.data?.data[0]?.token});
             setUser('');
             setPwd('');
             setSuccess(true);
