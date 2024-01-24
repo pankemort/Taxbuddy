@@ -3,9 +3,10 @@ import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fontsource/poppins/400.css";
-import "./register.css"
+// import "./register.css"
+import "./Login.css";
 import axios from '../api/axios';
-import { Link ,useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = 'https://project-taxbuddy.onrender.com/user/register';
@@ -13,7 +14,7 @@ const REGISTER_URL = 'https://project-taxbuddy.onrender.com/user/register';
 
 
 const Register = () => {
-    const navigation = useNavigate()
+
 
 
   const userRef = useRef();
@@ -91,27 +92,18 @@ catch (err) {
 
 
   return (
-    < div className="container">
-      <>
-      <nav className='main-nav'>
+    <>
+     <nav className='main-nav'>
         <div className='logo'>
             <h2>
                 <span>T</span>ax
                 <span>B</span>uddy
             </h2>
         </div>
-
-
-     <div className="menu-link">
-     <ul>
-            <li onClick={()=>navigation("/login")}>
-              
-              <Link to='/login' className='loginlink'>  Login </Link>
-              
-            </li>
-      </ul>
-      </div> 
-    </nav>
+        </nav>
+    < div className="container">
+     
+    
      {success ? (
                 <section>
                     <h1>Success!</h1>
@@ -124,14 +116,17 @@ catch (err) {
         
        <section className='Register-section'> 
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Register</h1>
-                    <form  onSubmit={handleSubmit}>
-                        <label htmlFor="username">
+                    <div className='formouter'>
+                    <h1 className='letsgo'>LETS GO!!!</h1>
+                    <form  onSubmit={handleSubmit} className='forminner'>
+                        <div className='signupusername'>
+                        <label htmlFor="username" className='labels'>
                             Username:
                             <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
                         </label>
-                        <input
+                        
+                        <input 
                             type="text"
                             id="username"
                             ref={userRef}
@@ -150,12 +145,15 @@ catch (err) {
                             Must begin with a letter.<br />
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
+                        </div>
+                        <div className='signuppwd'>
                         <label htmlFor="password">
+                            
                             Password:
                             <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
                         </label>
-                        <input
+                        <input className='inputs'
                             type="password"
                             id="password"
                             onChange={(e) => setPwd(e.target.value)}
@@ -172,13 +170,14 @@ catch (err) {
                             Must include uppercase and lowercase letters, a number and a special character.<br />
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
-
+                        </div>
+                        <div className='.signuppwd'>
                         <label htmlFor="confirm_pwd">
                             Confirm Password:
                             <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
                         </label>
-                        <input
+                        <input className='inputs'
                             type="password"
                             id="confirm_pwd"
                             onChange={(e) => setMatchPwd(e.target.value)}
@@ -193,8 +192,10 @@ catch (err) {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </p>
-
+                        </div>
+                        <div className='signupbtn'>
                         <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        </div>
                         <p>
                         Already registered?<br />
                         <span className="link">
@@ -204,10 +205,12 @@ catch (err) {
                     </p>
 
                     </form>
+                    </div>
         </section>
             )}
-    </>
+    
     </div>
+    </>
     
   )
 }
