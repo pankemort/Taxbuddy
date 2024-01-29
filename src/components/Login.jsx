@@ -36,8 +36,8 @@ const Login = () => {
                     // withCredentials: true
                 }
             );
-            // console.log(JSON.stringify(response?.data?.data[0]?.token));
-            //console.log(JSON.stringify(response));
+            console.log(JSON.stringify(response?.data?.data[0]?.token));
+            console.log(JSON.stringify(response));
             // const accessToken = response?.data?.data[0]?.token;
             // setaccesstoken(response?.data?.data[0]?.token)
             // const accessToken = response?.data?.accessToken;
@@ -80,6 +80,7 @@ const Login = () => {
                     <br />
                     <p className='link'>
                         <Link to="/upload" style={{color:'black'}}>Go to Home</Link>
+                        <Link to="/Data" style={{color:'black'}}>Go to Data</Link>
                     </p>
                 </section>
             ) : (
