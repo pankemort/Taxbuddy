@@ -2,74 +2,71 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
-  margin: 1000px auto; /* Center the container horizontally */
+  justify-content: center;
+  height: 100vh; /* Adjusted height */
 }
 
-.upload-container h2 {
-  margin-bottom: 15px;
-  font-size: 18px;
-  font-weight: bold;
+h2 {
+  font-size: 32px; /* Set h2 size to 32px */
+  margin-bottom: 20px;
+  margin-left: 58px;
 }
 
-.file-input {
-  margin-bottom: 10px;
+.logo {
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
-.file-input input[type="file"] {
-  display: none; /* Hide the default file input */
-}
-
-.file-preview {
+.uploadform {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 15px;
 }
 
-.file-preview img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
+input[type="file"] {
+  margin-bottom: 13px;
+  height: 40px;
+  font-size: 19px;
+  padding-top: 6px;
+  font-family: 'Poppins';
+  font-weight: 400; /* Set input height to 40px */
 }
 
-.file-preview p {
-  margin-top: 5px;
-  font-size: 14px;
+.file-preview {
+  margin-bottom: 20px;
+  
 }
 
-.upload-button {
-  background-color: #4CAF50; /* Green */
-  border: none;
+.imagebutton {
+  background-color: #0F82FF;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  width: 99%;
+  margin-bottom: 0;
+  position: relative;
+  margin: 0 0 25px;
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
-.upload-button:disabled {
+.imagebutton:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-
-.progress-bar {
-  width: 100%;
-  height: 5px;
-  background-color: #ccc;
-  border-radius: 5px;
+.uploadinput{
+  border: 2px solid #d6d9de;
+  border-radius: 43px;
+  padding: 0 19px 0px 9px;
+  font-family: 'Poppins',sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  height: 40px;
+  color: #2a2e34;
+  width: 101%;
 }
-
-.progress-bar .progress {
-  background-color: #4CAF50; /* Green */
-  height: 100%;
-}
-
-.upload-status {
-  margin-top: 10px;
-  font-size: 14px;
+.selectedimg{
+  height: 145px;
 }

@@ -10,7 +10,8 @@ import 'jimp';
 // import 'jimp';
 // import Jimp from "jimp/es";
 import Tesseract, { createWorker } from 'tesseract.js/src';
-
+import "./Upload.css"
+import {BoxIconElement} from 'boxicons';
 
 const data = {
   text_roi_1: "employerNameAddress",
@@ -357,19 +358,27 @@ const Upload = () => {
       console.error(error); // Handle errors
     }
   };
+  <head>
+  <link rel="stylesheet" href="boxicons.min.css"/>
+ </head>
 
   return (
+    
     <div className="upload-container">
+      <div className='formouter'>
+      
       <h2>Upload Image</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+      <form className='uploadform' onSubmit={handleSubmit}>
+        <div className='logo'> <box-icon name='cloud-upload' color='#0f82ff' className="custom-icon"  size='lg'></box-icon></div>
+      
+        <input type="file" className='uploadinput' accept="image/*" onChange={handleFileChange} />
         {selectedFile && (
           <div className="file-preview">
-            <img src={URL.createObjectURL(selectedFile)} alt="Selected Image" />
+            <img src={URL.createObjectURL(selectedFile)} alt="Selected Image"  className='selectedimg'/>
             <p>{selectedFile.name}</p>
           </div>
         )}
-        <button type="submit" disabled={!selectedFile}>
+        <button className='imagebutton' type="submit" disabled={!selectedFile}>
           Upload Image
         </button>
         {uploadProgress > 0 && (
@@ -377,6 +386,7 @@ const Upload = () => {
         )}
         {uploadStatus && <p>{uploadStatus}</p>}
       </form>
+      </div>
     </div>
   );
 };

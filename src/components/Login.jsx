@@ -79,8 +79,8 @@ const Login = () => {
                     <h1>You are logged in!</h1>
                     <br />
                     <p className='link'>
-                        <Link to="/upload" style={{color:'black'}}>Go to Home</Link>
-                        <Link to="/Data" style={{color:'black'}}>Go to Data</Link>
+                        <Link to="/upload" style={{color:'black'}}>Upload Documents</Link>
+                        <Link to="/Data" style={{color:'black', marginLeft:'10px'} } >Go to Data</Link>
                     </p>
                 </section>
             ) : (
