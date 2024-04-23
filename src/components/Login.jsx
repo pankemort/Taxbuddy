@@ -4,7 +4,10 @@ import AuthContext from "../context/AuthProvider"
 // import "./register.css";
 import axios from '../api/axios';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
+
 const LOGIN_URL = 'https://project-taxbuddy.onrender.com/user/login';
+
 
 const Login = () => {
     const {setAuth} = useContext(AuthContext);
@@ -16,6 +19,8 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [userName, setUserName] = useState(''); // State to store user's name
 
     useEffect(() => {
         userRef.current.focus();
@@ -27,8 +32,11 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
 
         try {
+            
+            
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ "name":user, "password":pwd }),
                 {
@@ -43,6 +51,7 @@ const Login = () => {
             // const accessToken = response?.data?.accessToken;
             // const roles = response?.data?.roles;
             setAuth({token:response?.data?.data[0]?.token});
+            setUserName(user); // Set the user's name once logged in
             setUser('');
             setPwd('');
             setSuccess(true);
@@ -58,6 +67,9 @@ const Login = () => {
                 setErrMsg('Login Failed');
             }
             errRef.current.focus();
+        }finally{
+            setIsLoading(false);
+
         }
     }
 
@@ -74,9 +86,9 @@ const Login = () => {
         </nav>
         
     < div className="container">
-            {success ? (
+            {success ? (    
                 <section>
-                    <h1>You are logged in!</h1>
+                    <h1>Welcome, {userName}!</h1>
                     <br />
                     <p className='link'>
                         <Link to="/upload" style={{color:'black'}}>Upload Documents</Link>
@@ -111,9 +123,16 @@ const Login = () => {
                             required
                         />
                         </div>
-                        <div className='signupbtn'>
+                        {/* <div className='signupbtn'>
                         <button>Sign In</button>
-                        </div>
+                        </div> */}
+                          <div className="signupbtn">
+                  {isLoading ? (
+                    <Loader /> // Render the Loader component if loading is true
+                  ) : (
+                    <button type="submit">Sign In</button>
+                  )}
+                </div>
                     </form>
                    
                     <p>

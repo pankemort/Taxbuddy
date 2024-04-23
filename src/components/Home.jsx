@@ -4,6 +4,7 @@ import "./home.css"
 import {Link,Route,Routes,useNavigate} from "react-router-dom";
 import Register from './Register';
 
+
 const Home = () => {
   const navigation = useNavigate()
   return (
@@ -14,6 +15,7 @@ const Home = () => {
     
     <nav className='main-nav'>
         <div className='logo'>
+       
             <h2>
                 <span>T</span>ax
                 <span>B</span>uddy
@@ -34,6 +36,7 @@ const Home = () => {
 
     <section className='hero-section'>
       <p>Welcome to </p>
+      
       <h1>TAXBUDDY</h1>
     </section>
     <Routes>
