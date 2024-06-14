@@ -7,6 +7,7 @@ import "@fontsource/poppins/400.css";
 import "./Login.css";
 import axios from '../api/axios';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = 'https://project-taxbuddy.onrender.com/user/register';
@@ -34,7 +35,7 @@ const Register = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
 
   useEffect(() => {
       userRef.current.focus();
@@ -62,6 +63,7 @@ const handleSubmit = async (e) => {
       setErrMsg("Invalid Entry");
       return;
   }
+  setIsLoading(true);
   try {
     const response = await axios.post(REGISTER_URL,
         JSON.stringify({ "name":user, "password":pwd }),
@@ -86,7 +88,10 @@ catch (err) {
   }
   errRef.current.focus();
 }
+finally{
+    setIsLoading(false);
 }
+};
 
 
 
@@ -95,10 +100,12 @@ catch (err) {
     <>
      <nav className='main-nav'>
         <div className='logo'>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <h2>
                 <span>T</span>ax
                 <span>B</span>uddy
             </h2>
+            </Link>
         </div>
         </nav>
     < div className="container">
@@ -194,7 +201,12 @@ catch (err) {
                         </p>
                         </div>
                         <div className='signupbtn'>
-                        <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        {/* <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button> */}
+                        {isLoading ? (
+                         <Loader /> // Render the Loader component if loading is true
+                             ) : (
+                                  <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                                 )}
                         </div>
                         <p>
                         Already registered?<br />

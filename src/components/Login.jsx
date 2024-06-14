@@ -3,7 +3,7 @@ import { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from "../context/AuthProvider"
 // import "./register.css";
 import axios from '../api/axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loader from './Loader';
 
 const LOGIN_URL = 'https://project-taxbuddy.onrender.com/user/login';
@@ -14,6 +14,7 @@ const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
     const [accessToken, setaccesstoken] = useState('');
+    const navigate = useNavigate(); // Use navigate for programmatic navigation
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
@@ -54,7 +55,8 @@ const Login = () => {
             setUserName(user); // Set the user's name once logged in
             setUser('');
             setPwd('');
-            setSuccess(true);
+            // setSuccess(true);
+            navigate('/success', { state: { userName: user } }); // Navigate to SuccessPage with userName
         } catch (err) {
             if (!err?.response) {
                 console.log(err)
@@ -78,15 +80,17 @@ const Login = () => {
         <>
         <nav className='main-nav'>
         <div className='logo'>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <h2>
                 <span>T</span>ax
                 <span>B</span>uddy
             </h2>
+         </Link>
         </div>
         </nav>
         
     < div className="container">
-            {success ? (    
+            {/* {success ? (    
                 <section>
                     <h1>Welcome, {userName}!</h1>
                     <br />
@@ -95,7 +99,7 @@ const Login = () => {
                         <Link to="/Data" style={{color:'black', marginLeft:'10px'} } >Go to Data</Link>
                     </p>
                 </section>
-            ) : (
+            ) : ( */}
                 <section className='Register-section'>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <div className='formouter'>
@@ -144,7 +148,7 @@ const Login = () => {
                     </p>
                     </div>
                 </section>
-            )}
+            {/* )} */}
       
         </div>
          </>

@@ -12,6 +12,7 @@ import 'jimp';
 import Tesseract, { createWorker } from 'tesseract.js/src';
 import "./Upload.css"
 import {BoxIconElement} from 'boxicons';
+import { useNavigate } from 'react-router-dom';
 
 const data = {
   text_roi_1: "employerNameAddress",
@@ -53,7 +54,7 @@ const Upload = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadStatus, setUploadStatus] = useState('');
   const YOUR_BEARER_TOKEN = auth;
-
+  const navigation = useNavigate()
   const handleFileChange = (event) => {
     // console.log(event.target.result);
     setSelectedFile(event.target.files[0]);
@@ -220,6 +221,7 @@ const Upload = () => {
                       console.log("Completed 3");
                       console.log(response);
                       console.log("Completed 4");
+                      navigation("/data");
                       // setSuccess(true);
                     })
                     .catch((error) => {

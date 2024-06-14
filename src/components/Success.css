@@ -1,0 +1,54 @@
+
+.container2 {
+  
+    text-align: center; /* Center-align text and elements */
+    margin-top: 50px; /* Add some top margin for spacing */
+    position: absolute; /* Position the container */
+    top: 50%; /* Move the container from the top by 50% of the viewport height */
+    left: 50%; /* Move the container from the left by 50% of the viewport width */
+    transform: translate(-50%, -50%);
+   
+}
+
+h1 {
+    font-size: 38px; /* Increase the size of the heading */
+    color: #333; /* Change the color to a darker shade */
+    margin-bottom: 20px; /* Add some space below the heading */
+}
+
+.link {
+    font-size: 18px; /* Increase the size of the link text */
+    display: inline-block; /* Allow margin to work as expected */
+    margin: 10px; /* Add some space between links */
+    text-decoration: none; /* Remove underline */
+}
+
+.link a {
+    color: #ffffff; /* Change the link color */
+    transition: color 0.3s ease; /* Add a smooth transition for hover effects */
+}
+
+.link a:hover {
+    color: #f4f5f6; /* Change the link color on hover */
+}
+
+.btn-container {
+    margin-top: 20px; /* Add some space above the buttons */
+}
+
+.button2 {
+    display: inline-block; /* Make the button inline-block */
+    padding: 10px 20px; /* Add padding */
+    font-size: 16px; /* Increase the font size */
+    color: #fff; /* White text color */
+    background-color: #0f82ff; /* Button background color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.button2:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}

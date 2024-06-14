@@ -134,6 +134,9 @@ button{
     color: white ;
     
 }
+button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}
 .signupbtn{
     --color-error: #e04f44;
     position: relative;

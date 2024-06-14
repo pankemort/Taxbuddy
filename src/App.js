@@ -6,6 +6,8 @@ import Login from './components/Login'
 import Upload from './components/Upload'
 import DataView from './components/Dataview'
 
+  import SuccessPage from './components/SuccessPage'
+
 const App = () => {
   return (
   
@@ -17,8 +19,11 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
           <Route path='/login' element={<Register/>}/> 
           <Route path='/login1' element={<Login/>}/>
+          <Route path="/success" element={<SuccessPage />} />
           <Route path= '/upload' element={<Upload/>}/>
           <Route path= '/Data' element={<DataView/>}/>
+          
+          
 
           
      
